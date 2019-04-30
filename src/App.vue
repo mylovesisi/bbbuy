@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- 头部 -->
     <div class="header">
       <!-- 1.0 导航栏头部 -->
       <div class="head-top">
@@ -38,9 +39,9 @@
           <div id="menu2" class="nav-box menuhd">
             <ul>
               <li class="index">
-                <a href="#" class>
-                  <span class="out" style="top: 0px;">首页</span>
-                </a>
+                <router-link to="/index">
+                <span class="out" style="top: 0px;">首页</span>
+                </router-link>
               </li>
               <li class="news">
                 <a href="#" class>
@@ -63,7 +64,7 @@
                 </a>
               </li>
               <li class="goods">
-                <a href class="router-link-exact-active">
+                <a href >
                   <span class="out" style="top: 0px;">购物商城</span>
                 </a>
               </li>
@@ -87,6 +88,9 @@
         </div>
       </div>
     </div>
+    <!-- 路由出口 -->
+    <router-view></router-view>
+    <!-- 尾部 -->
     <div class="footer">
       <div class="section">
         <div class="foot-nav">
