@@ -15,23 +15,23 @@
             <div class="goods-box clearfix">
               <div class="pic-box"></div>
               <div class="goods-spec">
-                <h1>华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-                <p class="subtitle">双800万摄像头，八核，安卓智能手机）荣耀6plus</p>
+                <h1>{{goodsinfo.title}}</h1>
+                <p class="subtitle">{{goodsinfo.zhaiyao}}</p>
                 <div class="spec-box">
                   <dl>
                     <dt>货号</dt>
-                    <dd id="commodityGoodsNo">SD9102356032</dd>
+                    <dd id="commodityGoodsNo">{{goodsinfo.goods_no}}</dd>
                   </dl>
                   <dl>
                     <dt>市场价</dt>
                     <dd>
-                      <s id="commodityMarketPrice">¥2499</s>
+                      <s id="commodityMarketPrice">¥{{goodsinfo.market_price}}</s>
                     </dd>
                   </dl>
                   <dl>
                     <dt>销售价</dt>
                     <dd>
-                      <em id="commoditySellPrice" class="price">¥2195</em>
+                      <em id="commoditySellPrice" class="price">¥{{goodsinfo.sell_price}}</em>
                     </dd>
                   </dl>
                 </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="txt-box">
                       <a href="#/site/goodsinfo/90" class>{{item.title}}</a>
-                      <span>{{item.add_time}}</span>
+                      <span>{{item.add_time | formDate}}</span>
                     </div>
                   </li>
                 </ul>

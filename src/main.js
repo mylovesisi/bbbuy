@@ -15,6 +15,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 //注册elementUI
 Vue.use(ElementUI);
+//导入moment
+import moment from "moment";
+//全局的过滤器
+Vue.filter('formDate',value => moment(value).format("YYYY年MM月DD日"))
 
 const router = new VueRouter({
   routes: [

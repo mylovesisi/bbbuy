@@ -181,7 +181,7 @@
 
 <script>
 import axios from "axios";
-import moment from "moment";
+// import moment from "moment";
 export default {
   //方便调试和查询状态
 
@@ -210,10 +210,10 @@ export default {
       });
   },
   /* 过滤器 */
-  filters: {
-    //  formDate:(value)=>value.split('T')[0]
-    formDate: value => moment(value).format("YYYY年MM月DD日")
-  }
+  // filters: {
+  //   //  formDate:(value)=>value.split('T')[0]
+  //   formDate: value => moment(value).format("YYYY年MM月DD日")
+  // }
 };
 </script>
 
