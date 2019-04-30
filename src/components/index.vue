@@ -149,7 +149,8 @@
         <div class="wrap-box">
           <ul class="img-list">
             <li v-for="(it, i) in item.datas" :key="i">
-              <router-link to="/detail">
+              <!-- 动态匹配路由 传商品ID给商品详情页后请求详情数据 -->
+              <router-link :to="'/detail/'+it.artID">
                 <div class="img-box">
                   <img
                     :src="it.img_url"
