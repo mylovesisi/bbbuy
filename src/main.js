@@ -16,7 +16,7 @@ import moment from "moment"
 import axios from "axios"
 axios.defaults.baseURL = "http://111.230.232.110:8899"
 //添加到原型中
-Vue.prototype.axios = axios
+Vue.prototype.$axios = axios
 //注册使用axios
 Vue.filter("formDate", (value,formatData) =>{
   if(formatData){

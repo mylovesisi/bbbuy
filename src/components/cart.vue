@@ -132,7 +132,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "cart",
   data() {
@@ -151,7 +150,7 @@ export default {
   },
   methods: {
     getCart() {
-      axios
+      this.$axios
         .get(
           `http://111.230.232.110:8899/site/comment/getshopcargoods/${
             this.goodsId

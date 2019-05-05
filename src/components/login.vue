@@ -62,7 +62,7 @@ export default {
  
   methods: {
     loginIn() {
-      this.axios
+      this.$axios
         .post("site/account/login", {
           user_name: this.username,
           password: this.password

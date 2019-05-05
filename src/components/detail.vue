@@ -248,7 +248,7 @@ export default {
         });
         return;
       }
-      this.axios
+      this.$axios
         .post(
           `http://111.230.232.110:8899/site/validate/comment/post/goods/${
             this.$route.params.id
@@ -271,7 +271,7 @@ export default {
     },
     //获取商品详情信息
     getCommodityDetails() {
-      this.axios
+      this.$axios
         .get(
           `http://111.230.232.110:8899/site/goods/getgoodsinfo/${
             this.$route.params.id
@@ -286,7 +286,7 @@ export default {
     },
     //获取评论数据
     getComment() {
-      this.axios
+      this.$axios
         .get(
           `http://111.230.232.110:8899/site/comment/getbypage/goods/${
             this.$route.params.id
