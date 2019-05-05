@@ -180,8 +180,6 @@
 </template>
 
 <script>
-import axios from "axios";
-// import moment from "moment";
 export default {
   //方便调试和查询状态
 
@@ -194,26 +192,23 @@ export default {
     };
   },
   created() {
-    axios
+    this.axios
       .get("http://111.230.232.110:8899/site/goods/gettopdata/goods")
       .then(res => {
         this.catelist = res.data.message.catelist;
         this.sliderlist = res.data.message.sliderlist;
         this.toplist = res.data.message.toplist;
       });
-    axios
+   this.axios
       .get("http://111.230.232.110:8899/site/goods/getgoodsgroup")
       .then(res => {
         this.sectionList = res.data.message;
-        // console.log(res);
         
       });
+      this.axios.get('site/account/islogin').then(res=>{
+      console.log(res);
+    })
   },
-  /* 过滤器 */
-  // filters: {
-  //   //  formDate:(value)=>value.split('T')[0]
-  //   formDate: value => moment(value).format("YYYY年MM月DD日")
-  // }
 };
 </script>
 

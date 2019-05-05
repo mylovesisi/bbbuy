@@ -11,24 +11,24 @@
             <a target="_blank" href="#"></a>
           </div>
           <div id="menu" class="right-box">
-            <span style="display: none;">
-              <a href class>登录</a>
+            <span v-if="shows==true" @click="shows=!shows">
+              <router-link to="/login">登录</router-link>
               <strong>|</strong>
               <a href class>注册</a>
               <strong>|</strong>
             </span>
-            <span>
-              <a href class>会员中心</a>
+            <span v-else-if="shows==false" @click="shows=!shows">
+              <router-link to="/user">会员中心</router-link>
               <strong>|</strong>
-              <a>退出</a>
+              <a @click="loginOut">退出</a>
               <strong>|</strong>
             </span>
-            <a href class>
+            <router-link :to="'/cart/'+ids">
               <i class="iconfont icon-cart"></i>购物车(
               <span id="shoppingCartCount">
                 <span>4</span>
               </span>)
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
             <ul>
               <li class="index">
                 <router-link to="/index">
-                <span class="out" style="top: 0px;">首页</span>
+                  <span class="out" style="top: 0px;">首页</span>
                 </router-link>
               </li>
               <li class="news">
@@ -64,7 +64,7 @@
                 </a>
               </li>
               <li class="goods">
-                <a href >
+                <a href>
                   <span class="out" style="top: 0px;">购物商城</span>
                 </a>
               </li>
@@ -128,7 +128,28 @@
 
 <script>
 export default {
-  name: "app"
+  name: "app",
+  data() {
+    return {
+      ids: JSON.parse(localStorage.getItem("commodityId")),
+      shows: true
+    };
+  },
+  methods: {
+    loginOut() {
+      window.localStorage.removeItem("islogin");
+      Message({
+        type: "success",
+        message: "注销成功"
+      });
+      this.axios.get("site/account/logout");
+    }
+  },
+  watch: {
+    $route(val) {
+      this.ids;
+    }
+  }
 };
 </script>
 
