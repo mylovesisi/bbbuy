@@ -7,7 +7,6 @@ import index from "@/components/index.vue";
 import detail from "@/components/detail.vue";
 //导入购物车
 import cart from "@/components/cart.vue";
-import axios from 'axios'
 //导入登录页面
 import login from "@/components/login.vue";
 //导入订单列表
@@ -69,7 +68,13 @@ const router = new VueRouter({
           path: "orderDetail",
           component: orderDetail,
           name: "orderDetail"
-        }
+        },
+        {
+          // 以 / 开头的嵌套路径会被当作根路径 不要加/
+          path: "",
+          redirect: userInfo,
+          name: "userInfo"
+        },
       ]
     }
   ]
@@ -78,11 +83,13 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   //如果访问登录的路由可以执行下一个
   if (to.name === "user") {
-  axios
-      .get("http://111.230.232.110:8899/site/account/islogin")
+     Vue.prototype.$axios.get("http://111.230.232.110:8899/site/account/islogin")
       .then(res => {
         if (res.data.code == "logined") {
-         
+          Message({
+            type: "success",
+            message: "已经登录"
+          });
           next();
         } else if (res.data.code == "nologin") {
            Message({
