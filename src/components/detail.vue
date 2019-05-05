@@ -155,6 +155,7 @@
                     :page-size="pageSize"
                     layout="total, sizes, prev, pager, next, jumper"
                     :total="totalcount"
+                    background
                   ></el-pagination>
                 </div>
               </div>
@@ -226,7 +227,7 @@ export default {
     /* 购买数量判断 */
     handleChange(value) {
       this.cartNum.push(value);
-      console.log(value);
+      // console.log(value);
       //数量拼接id 便于识别
       localStorage.setItem(
         `commodityNum+${this.goodsinfo.id}`,
@@ -312,7 +313,7 @@ export default {
     },
     addCart(val) {
       // console.log(val);
-      console.log(this.cartNum);
+      // console.log(this.cartNum);
       // 不需要去重,因为id是唯一的 购物车会筛选id
       //去重,因为后续的商品数量的识别会重复
       let vlas = JSON.parse(localStorage.getItem("commodityId")) || [];
@@ -336,9 +337,10 @@ export default {
   // },
   watch: {
     /* 监听路由中id的变化后重新调用接口渲染页面 */
-    $route(val) {
+    $route() {
       this.getCommodityDetails();
       this.num = 1;
+      this.getComment()
     }
   }
 };

@@ -206,7 +206,7 @@ export default {
         
       });
       this.$axios.get('site/account/islogin').then(res=>{
-      console.log(res);
+      // console.log(res);
     })
   },
 };
