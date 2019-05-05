@@ -15,6 +15,7 @@ import moment from "moment"
 //全局的axios 且设置基地址
 import axios from "axios"
 axios.defaults.baseURL = "http://111.230.232.110:8899"
+axios.defaults.withCredentials = true
 //添加到原型中
 Vue.prototype.$axios = axios
 //注册使用axios

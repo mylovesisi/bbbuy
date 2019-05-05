@@ -1,24 +1,24 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
-import { Message } from "element-ui"
+import Vue from "vue";
+import VueRouter from "vue-router";
+import { Message } from "element-ui";
 //导入index.vue
-import index from "@/components/index.vue"
+import index from "@/components/index.vue";
 //导入detail.vue
-import detail from "@/components/detail.vue"
+import detail from "@/components/detail.vue";
 //导入购物车
-import cart from "@/components/cart.vue"
-// import axios from 'axios'
+import cart from "@/components/cart.vue";
+import axios from 'axios'
 //导入登录页面
-import login from "@/components/login.vue"
+import login from "@/components/login.vue";
 //导入订单列表
-import userorderlist from "@/components/userorderlist.vue"
+import userorderlist from "@/components/userorderlist.vue";
 //导入订单详情
-import orderDetail from "@/components/orderDetail.vue"
+import orderDetail from "@/components/orderDetail.vue";
 //导入用户信息
-import userInfo from "@/components/userInfo.vue"
-import user from "@/components/user.vue"
+import userInfo from "@/components/userInfo.vue";
+import user from "@/components/user.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
@@ -73,34 +73,41 @@ const router = new VueRouter({
       ]
     }
   ]
-})
+});
 //路由的拦截
 router.beforeEach((to, from, next) => {
   //如果访问登录的路由可以执行下一个
   if (to.name === "user") {
-    // axios.get('http://111.230.232.110:8899/site/account/islogin').then(res=>{
-    //   if(res.data.code=='logined'){
-    //     next()
-    //   }else if(res.data.code=='nologin'){
-    //     next({
-    //       name:'login'
-    //     })
-    //   }
-    // })
-    const logins = window.localStorage.getItem("islogin")
-    if (!logins) {
-      Message({
-        type: "warning",
-        message: "请先登录"
-      })
-      next({
-        name: "login"
-      })
-    } else {
-      next()
-    }
+  axios
+      .get("http://111.230.232.110:8899/site/account/islogin")
+      .then(res => {
+        if (res.data.code == "logined") {
+         
+          next();
+        } else if (res.data.code == "nologin") {
+           Message({
+            type: "warning",
+            message: "请先登录"
+          });
+          next({
+            name: "login"
+          });
+        }
+      });
+    // const logins = window.localStorage.getItem("islogin")
+    // if (!logins) {
+    //   Message({
+    //     type: "warning",
+    //     message: "请先登录"
+    //   })
+    //   next({
+    //     name: "login"
+    //   })
+    // } else {
+    //   next()
+    // }
   } else {
-    next()
+    next();
   }
-})
-export default router
+});
+export default router;
